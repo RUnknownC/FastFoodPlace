@@ -13,7 +13,7 @@
                 <div class="card">
                     <div class="card-header">
                         <h4>Roles
-                            <a href="{{ url('roles/create')}}" class="btn btn-primary float-end">Add role</a>
+                            <a href="{{ url('roles/create')}}" class="btn btn-primary float-end" style="background-color: black; color: white;">Add role</a>
                         </h4>
                     </div>
                     <div class="card-body">
@@ -32,11 +32,11 @@
                                     <td>{{ $role->id }}</td>
                                     <td>{{ $role->name}}</td>
                                     <td>
-                                        <a href ="{{ url('roles/'.$role->id.'/give-permissions') }}" class="btn btn-success">
+                                        <a href ="{{ url('roles/'.$role->id.'/give-permissions') }}" class="btn btn-success" style="background-color: black; color: white;">
                                             Add / Edit Role Permission
                                         </a>
 
-                                        <a href="{{ url('roles/'.$role->id.'/edit') }}" class="btn btn-success">Edit</a>
+                                        <a href="{{ url('roles/'.$role->id.'/edit') }}" class="btn btn-success" style="background-color: black; color: white;">Edit</a>
                                         <a href="{{ url('roles/'.$role->id.'/delete')}}" class="btn btn-danger mx-2">Delete</a>
                                     </td>
                                 </tr>

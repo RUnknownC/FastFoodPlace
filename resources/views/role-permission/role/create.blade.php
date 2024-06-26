@@ -7,7 +7,7 @@
                 <div class="card">
                     <div class="card-header">
                         <h4>Create Role
-                            <a href="{{ url('roles') }}" class="btn btn-primary float-end">Back</a>
+                            <a href="{{ url('roles') }}" class="btn btn-primary float-end" style="background-color: black; color: white;">Back</a>
                         </h4>
                     </div>
                     <div class="card-body">
@@ -20,7 +20,7 @@
                                 <input type="text" name="name" class="form-control"/>
                             </div>
                             <div class="mb-3">
-                                <button type="submit" class="btn btn-primary">Save</button>
+                                <button type="submit" class="btn btn-primary" style="background-color: black; color: white;">Save</button>
                             </div>
                         </form>
                     </div>

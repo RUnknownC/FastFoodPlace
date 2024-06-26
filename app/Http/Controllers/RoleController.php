@@ -56,28 +56,30 @@ class RoleController extends Controller
     }
 
     public function addPermissionToRole($roleId){
-        $permissions = Permission::get();
+        $permissions = Permission::all();
         $role = Role::findOrFail($roleId);
-        $rolePermissions = DB::table('role_has_permissions')
-                                ->where('role_has_permissions.role_id', $role->id)
-                                ->pluck('role_has_permissions.permission_id', 'role_has_permissions.permission_id'  )
-                                ->all();
+        $rolePermissions = $role->permissions->pluck('id')->toArray();
 
-        return view('role-permission.role.add-permissions',
-         ['role'=>$role,
-          'permissions'=>$permissions,
-          'rolePermissions' => $rolePermissions
+        return view('role-permission.role.add-permissions', [
+            'role' => $role,
+            'permissions' => $permissions,
+            'rolePermissions' => $rolePermissions
         ]);
-        
     }
 
     public function givePermissionToRole(Request $request, $roleId){
         $request->validate([
-            'permission' => 'required'
+            'permission' => 'required|array'
         ]);
 
         $role = Role::findOrFail($roleId);
-        $role -> syncPermissions($request->permissions);
+        $permissions = Permission::whereIn('id', $request->permission)->get();
+        
+        if ($permissions->count() != count($request->permission)) {
+            return redirect()->back()->with('status', 'Some permissions do not exist.');
+        }
+
+        $role->syncPermissions($permissions);
 
         return redirect()->back()->with('status', 'Permissions added to role');
     }

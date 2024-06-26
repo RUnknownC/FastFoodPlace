@@ -13,7 +13,7 @@
                 <div class="card">
                     <div class="card-header">
                         <h4>Permissions
-                            <a href="{{ url('permissions/create')}}" class="btn btn-primary float-end">Add Permission</a>
+                            <a href="{{ url('permissions/create')}}" class="btn btn-primary float-end" style="background-color: black; color: white;">Add Permission</a>
                         </h4>
                     </div>
                     <div class="card-body">
@@ -32,7 +32,7 @@
                                     <td>{{ $permission->id }}</td>
                                     <td>{{ $permission-> name}}</td>
                                     <td>
-                                        <a href="{{ url('permissions/'.$permission->id.'/edit') }}" class="btn btn-success">Edit</a>
+                                        <a href="{{ url('permissions/'.$permission->id.'/edit') }}" class="btn btn-success" style="background-color: black; color: white;">Edit</a>
                                         <a href="{{ url('permissions/'.$permission->id.'/delete')}}" class="btn btn-danger mx-2">Delete</a>
                                     </td>
                                 </tr>

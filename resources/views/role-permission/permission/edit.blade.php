@@ -7,7 +7,7 @@
                 <div class="card">
                     <div class="card-header">
                         <h4>Edit Permissions
-                            <a href="{{ url('permissions') }}" class="btn btn-primary float-end">Back</a>
+                            <a href="{{ url('permissions') }}" class="btn btn-primary float-end" style="background-color: black; color: white;">Back</a>
                         </h4>
                     </div>
                     <div class="card-body">
@@ -21,7 +21,7 @@
                                 <input type="text" name="name" value="{{ $permission->name }}"class="form-control"/>
                             </div>
                             <div class="mb-3">
-                                <button type="submit" class="btn btn-primary">Update</button>
+                                <button type="submit" class="btn btn-primary" style="background-color: black; color: white;">Update</button>
                             </div>
                         </form>
                     </div>
