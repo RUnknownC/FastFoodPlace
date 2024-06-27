@@ -11,7 +11,8 @@
                     <div class="card-body">
                         <form action="{{ url('users/'.$user->id) }}" method="POST">
                             @csrf
-
+                            @method('PUT')
+                            
                             <div class="mb-3">
                                 <label for="name">Name</label>
                                 <input type="text" name="name" value="{{ $user->name}}" class="form-control" required/>
@@ -39,7 +40,7 @@
                                     </option>
                                     @endforeach
                                 </select>
-                                @error('roles')<span class="text">{{ $message }}</span>@enderror
+                                @error('roles')<span class="text">{{ $message }}</span> @enderror
                             </div>
                             <div class="mb-3">
                                 <button type="submit" class="btn btn-primary" style="background-color: black; color: white;">Save</button>

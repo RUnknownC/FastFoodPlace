@@ -2,6 +2,9 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\CommentController;
+use App\Models\Post;
 
 
 Route::resource('permissions', App\Http\Controllers\PermissionController::class);
@@ -15,9 +18,12 @@ Route::put('roles/{roleId}/give-permissions', [ App\Http\Controllers\RoleControl
 Route::resource('users', App\Http\Controllers\UserController::class );
 Route::get('users/{userId}/delete', [App\Http\Controllers\UserController::class, 'destroy']);
 
+Route::resource('posts', App\Http\Controllers\PostController::class);
+
 Route::get('/', function () {
-    return view('welcome');
-});
+    $posts = Post::all(); // Fetch posts from the database
+    return view('posts.index', compact('posts'));
+})->name('posts.index');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -28,5 +34,11 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+Route::redirect('/', '/posts');
+Route::resource('posts', PostController::class);
+
+
+Route::post('/posts/{post}/comments', [CommentController::class, 'store'])->name('comments.store');
 
 require __DIR__.'/auth.php';
